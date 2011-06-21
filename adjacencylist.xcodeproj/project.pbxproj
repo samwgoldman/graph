@@ -6,7 +6,18 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		22112AFC13B147AE001C0C5D /* list.h in Headers */ = {isa = PBXBuildFile; fileRef = 22112AFB13B147AE001C0C5D /* list.h */; };
+		22112AFF13B14803001C0C5D /* list.c in Sources */ = {isa = PBXBuildFile; fileRef = 22112AFE13B14803001C0C5D /* list.c */; };
+		22112B0113B14880001C0C5D /* graph.h in Headers */ = {isa = PBXBuildFile; fileRef = 22112B0013B14880001C0C5D /* graph.h */; };
+		22112B0313B1489C001C0C5D /* graph.c in Sources */ = {isa = PBXBuildFile; fileRef = 22112B0213B1489C001C0C5D /* graph.c */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		22112AFB13B147AE001C0C5D /* list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = list.h; sourceTree = "<group>"; };
+		22112AFE13B14803001C0C5D /* list.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = list.c; sourceTree = "<group>"; };
+		22112B0013B14880001C0C5D /* graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = graph.h; sourceTree = "<group>"; };
+		22112B0213B1489C001C0C5D /* graph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graph.c; sourceTree = "<group>"; };
 		229B3B3213B1474E007E6D58 /* libadjacencylist.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libadjacencylist.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -24,6 +35,10 @@
 		229B3B2713B1474D007E6D58 = {
 			isa = PBXGroup;
 			children = (
+				22112B0013B14880001C0C5D /* graph.h */,
+				22112B0213B1489C001C0C5D /* graph.c */,
+				22112AFB13B147AE001C0C5D /* list.h */,
+				22112AFE13B14803001C0C5D /* list.c */,
 				229B3B3313B1474E007E6D58 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +58,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22112AFC13B147AE001C0C5D /* list.h in Headers */,
+				22112B0113B14880001C0C5D /* graph.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +110,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22112AFF13B14803001C0C5D /* list.c in Sources */,
+				22112B0313B1489C001C0C5D /* graph.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,7 +124,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = NO;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -132,7 +151,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -179,6 +198,7 @@
 				229B3B3813B1474E007E6D58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
