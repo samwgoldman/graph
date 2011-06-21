@@ -109,7 +109,7 @@ void vertex_remove_edge_to_vertex(Vertex *from, Vertex *to) {
 				from->edges->head = e->next;
 			}
 			else {
-				prev_e = e->next;
+				prev_e->next = e->next;
 			}
             free(e->data);
 			free(e);
