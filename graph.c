@@ -24,7 +24,7 @@ void vertex_free(void *data) {
     free(vertex);
 }
 
-Graph *graph_create() {
+Graph *graph_create(void) {
 	Graph *graph = malloc(sizeof(Graph));
 	graph->vertices = list_create(vertex_free);
 	graph->count = 0;

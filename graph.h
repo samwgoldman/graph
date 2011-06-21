@@ -23,7 +23,7 @@ typedef struct Graph {
 	int count;
 } Graph;
 
-Graph *graph_create();
+Graph *graph_create(void);
 Vertex *vertex_create(void *data);
 Edge *edge_create(Vertex *vertex, double weight);
 
