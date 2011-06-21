@@ -28,7 +28,7 @@ Node *node_create(void *data) {
 void list_add_data(List *list, void *data) {
     Node *node = node_create(data);
     node->next = list->head;
-    list->head = node->next;
+    list->head = node;
 }
 
 void list_add_data_sorted(List *list, void *data, int (*cmp)(const void *a, const void *b)) {
