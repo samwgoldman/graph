@@ -80,19 +80,19 @@ void list_free(List *list) {
 }
 
 void list_sort(List *list, int(*cmp)(const void *a, const void *b)) {
-    Node *p, *q, *e, *tail;
+    Node *p, *q, *e, *head, *tail;
     int insize, nmerges, psize, qsize, i;
     
-    Node *head = list->head;
-    if (!head) {
+    if (!list || !list->head)
         return;
-    }
+    
+    head = list->head;
     
     insize = 1;
     
     while (1) {
         p = head;
-        list = NULL;
+        head = NULL;
         tail = NULL;
         
         nmerges = 0;
@@ -104,38 +104,30 @@ void list_sort(List *list, int(*cmp)(const void *a, const void *b)) {
             for (i = 0; i < insize; i++) {
                 psize++;
                 q = q->next;
-                if (!q) {
-                    break;
-                }
+                if (!q) break;
             }
             qsize = insize;
             while (psize > 0 || (qsize > 0 && q)) {
                 if (psize == 0) {
-                    e = q;
-                    q = q->next;
-                    qsize--;
+                    e = q; q = q->next; qsize--;
                 }
-                else if (qsize ==0 || !q) {
-                    e = p;
-                    p = p->next;
-                    psize--;
+                else if (qsize == 0 || !q) {
+                    e = p; p = p->next; psize--;
                 }
                 else if (cmp(p->data, q->data) <= 0) {
-                    e = p;
-                    p = p->next;
-                    psize--;
+                    e = p; p = p->next; psize--;
                 }
                 else {
-                    e = q;
-                    q = q->next;
-                    qsize--;
+                    e = q; q = q->next; qsize--;
                 }
+                
                 if (tail) {
                     tail->next = e;
                 }
                 else {
                     head = e;
                 }
+                
                 tail = e;
             }
             p = q;
@@ -144,6 +136,7 @@ void list_sort(List *list, int(*cmp)(const void *a, const void *b)) {
         
         if (nmerges <= 1) {
             list->head = head;
+            return;
         }
         
         insize *= 2;
