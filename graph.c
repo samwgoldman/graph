@@ -15,7 +15,7 @@ void vertex_free(void *data);
 int compare_edges(const void *aa, const void *bb) {
     const Edge *a = aa;
     const Edge *b = bb;
-    return b->weight - a->weight;
+    return (a->weight > b->weight) - (a->weight < b->weight);
 }
 
 void vertex_free(void *data) {
