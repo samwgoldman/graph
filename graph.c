@@ -140,6 +140,20 @@ void vertex_sort_edges(Vertex *vertex) {
     list_sort(vertex->edges, compare_edges);
 }
 
+bool graph_is_balanced(Graph *g) {
+    Node *n = g->vertices->head;
+    Node *prev_n;
+    while (n) {
+        Vertex *v = n->data;
+        if (v->indegree != v->outdegree) {
+            return false;
+        }
+        prev_n = n;
+        n = n->next;
+    }
+    return true;
+}
+
 void graph_free(Graph *graph) {
     list_free(graph->vertices);
     free(graph);

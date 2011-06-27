@@ -6,6 +6,7 @@
 //  Copyright 2011 Sam Goldman. All rights reserved.
 //
 
+#include <stdbool.h>
 #include "list.h"
 
 typedef struct Edge {
@@ -42,5 +43,7 @@ void vertex_remove_edge_to_vertex(Vertex *from, Vertex *to);
 
 void graph_sort_vertices(Graph *graph, int(*cmp)(const void *a, const void *b));
 void vertex_sort_edges(Vertex *vertex);
+
+bool graph_is_balanced(Graph *graph);
 
 void graph_free(Graph *graph);
