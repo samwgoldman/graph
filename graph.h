@@ -16,6 +16,8 @@ typedef struct Edge {
 typedef struct Vertex {
     void *data;
     struct List *edges;
+    int indegree;
+    int outdegree;
 } Vertex;
 
 typedef struct Graph {

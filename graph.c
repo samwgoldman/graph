@@ -35,6 +35,8 @@ Vertex *vertex_create(void *data) {
     Vertex *vertex = malloc(sizeof(Vertex));
     vertex->data = data;
     vertex->edges = list_create(free);
+    vertex->indegree = 0;
+    vertex->outdegree = 0;
     return vertex;
 }
 
@@ -80,26 +82,37 @@ void graph_remove_vertex(Graph *graph, Vertex *vertex) {
 
 void vertex_add_edge(Vertex *vertex, Edge *edge) {
     list_add_data(vertex->edges, edge);
+    edge->vertex->indegree++;
+    vertex->outdegree++;
 }
 
 void vertex_add_edge_sorted(Vertex *vertex, Edge *edge) {
     list_add_data_sorted(vertex->edges, edge, compare_edges);
+    edge->vertex->indegree++;
+    vertex->outdegree++;
 }
 
 void vertex_remove_edge(Vertex *vertex, Edge *edge) {
     list_remove_data(vertex->edges, edge);
+    edge->vertex->indegree--;
+    vertex->outdegree--;
 }
 
 void vertex_add_edge_to_vertex(Vertex *from, Vertex *to, double weight) {
     Edge *edge = edge_create(to, weight);
     list_add_data(from->edges, edge);
+    to->indegree++;
+    from->outdegree++;
 }
 
 void vertex_add_edge_to_vertex_sorted(Vertex *from, Vertex *to, double weight) {
     Edge *edge = edge_create(to, weight);
     list_add_data_sorted(from->edges, edge, compare_edges);
+    to->indegree++;
+    from->outdegree++;
 }
 
+// here
 void vertex_remove_edge_to_vertex(Vertex *from, Vertex *to) {
     Node *e = from->edges->head;
     Node *prev_e = NULL;
@@ -111,6 +124,8 @@ void vertex_remove_edge_to_vertex(Vertex *from, Vertex *to) {
             else {
                 prev_e->next = e->next;
             }
+            to->indegree--;
+            from->outdegree--;
             free(e->data);
             free(e);
             break;
