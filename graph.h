@@ -9,18 +9,18 @@
 #include "list.h"
 
 typedef struct Edge {
-	struct Vertex *vertex;
-	double weight;
+    struct Vertex *vertex;
+    double weight;
 } Edge;
 
 typedef struct Vertex {
-	void *data;
-	struct List *edges;
+    void *data;
+    struct List *edges;
 } Vertex;
 
 typedef struct Graph {
-	struct List *vertices;
-	int count;
+    struct List *vertices;
+    int count;
 } Graph;
 
 Graph *graph_create(void);
