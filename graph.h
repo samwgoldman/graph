@@ -22,7 +22,6 @@ typedef struct Vertex {
 
 typedef struct Graph {
     struct List *vertices;
-    int count;
 } Graph;
 
 Graph *graph_create(void);

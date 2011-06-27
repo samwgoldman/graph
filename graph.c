@@ -27,7 +27,6 @@ void vertex_free(void *data) {
 Graph *graph_create(void) {
     Graph *graph = malloc(sizeof(Graph));
     graph->vertices = list_create(vertex_free);
-    graph->count = 0;
     return graph;
 }
 
@@ -49,12 +48,10 @@ Edge *edge_create(Vertex *vertex, double weight) {
 
 void graph_add_vertex(Graph *graph, Vertex *vertex) {
     list_add_data(graph->vertices, vertex);
-    graph->count++;
 }
 
 void graph_add_vertex_sorted(Graph *graph, Vertex *vertex, int(*cmp)(const void *a, const void *b)) {
     list_add_data_sorted(graph->vertices, vertex, cmp);
-    graph->count++;
 }
 
 void graph_remove_vertex(Graph *graph, Vertex *vertex) {
@@ -68,6 +65,7 @@ void graph_remove_vertex(Graph *graph, Vertex *vertex) {
             else {
                 prev_n->next = n->next;
             }
+            graph->vertices->count--;
             free(n);
         }
         else {
@@ -77,7 +75,6 @@ void graph_remove_vertex(Graph *graph, Vertex *vertex) {
         n = n->next;
     }
     vertex_free(vertex);
-    graph->count--;
 }
 
 void vertex_add_edge(Vertex *vertex, Edge *edge) {
