@@ -15,6 +15,7 @@ typedef struct Node {
 
 typedef struct List {
     Node *head;
+    int count;
     node_data_free_callback_t node_data_free_callback;
 } List;
 

@@ -14,6 +14,7 @@ Node *node_create(void *data);
 List *list_create(node_data_free_callback_t node_data_free_callback) {
     List *list = malloc(sizeof(List));
     list->head = NULL;
+    list->count = 0;
     list->node_data_free_callback = node_data_free_callback;
     return list;
 }
@@ -29,6 +30,7 @@ void list_add_data(List *list, void *data) {
     Node *node = node_create(data);
     node->next = list->head;
     list->head = node;
+    list->count++;
 }
 
 void list_add_data_sorted(List *list, void *data, int (*cmp)(const void *a, const void *b)) {
@@ -46,6 +48,7 @@ void list_add_data_sorted(List *list, void *data, int (*cmp)(const void *a, cons
     else {
         prev_n->next = node;
     }
+    list->count++;
 }
 
 void list_remove_data(List *list, void *data) {
@@ -60,6 +63,7 @@ void list_remove_data(List *list, void *data) {
                 prev_n->next = n->next;
             }
             list->node_data_free_callback(data);
+            list->count--;
             free(n);
             break;
         }
