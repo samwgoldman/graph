@@ -66,7 +66,6 @@ void graph_remove_vertex(Graph *graph, Vertex *vertex) {
             else {
                 prev_n->next = n->next;
             }
-            vertex_free(vertex);
             free(n);
         }
         else {
@@ -75,6 +74,7 @@ void graph_remove_vertex(Graph *graph, Vertex *vertex) {
         prev_n = n;
         n = n->next;
     }
+    vertex_free(vertex);
     graph->count--;
 }
 
